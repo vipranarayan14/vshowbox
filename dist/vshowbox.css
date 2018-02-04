@@ -1,0 +1,318 @@
+/* W3.CSS 4.04 Apr 2017 by Jan Egil and Borge Refsnes */
+html {
+  box-sizing: border-box;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+/* Extract from normalize.css by Nicolas Gallagher and Jonathan Neal git.io/normalize */
+html {
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+body {
+  margin: 0;
+}
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+main,
+menu,
+nav,
+section,
+summary {
+  display: block;
+}
+audio,
+canvas,
+progress,
+video {
+  display: inline-block;
+}
+progress {
+  vertical-align: baseline;
+}
+audio:not([controls]) {
+  display: none;
+  height: 0;
+}
+[hidden],
+template {
+  display: none;
+}
+a {
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+a:active,
+a:hover {
+  outline-width: 0;
+}
+abbr[title] {
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration: underline dotted;
+}
+dfn {
+  font-style: italic;
+}
+mark {
+  background: #ff0;
+  color: #000;
+}
+small {
+  font-size: 80%;
+}
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+sub {
+  bottom: -0.25em;
+}
+sup {
+  top: -0.5em;
+}
+figure {
+  margin: 1em 40px;
+}
+img {
+  border-style: none;
+}
+svg:not(:root) {
+  overflow: hidden;
+}
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace,monospace;
+  font-size: 1em;
+}
+hr {
+  box-sizing: content-box;
+  height: 0;
+  overflow: visible;
+}
+button,
+input,
+select,
+textarea {
+  font: inherit;
+  margin: 0;
+}
+optgroup {
+  font-weight: bold;
+}
+button,
+input {
+  overflow: visible;
+}
+button,
+select {
+  text-transform: none;
+}
+button,
+html [type=button],
+[type=reset],
+[type=submit] {
+  -webkit-appearance: button;
+}
+button::-moz-focus-inner,
+[type=button]::-moz-focus-inner,
+[type=reset]::-moz-focus-inner,
+[type=submit]::-moz-focus-inner {
+  border-style: none;
+  padding: 0;
+}
+button:-moz-focusring,
+[type=button]:-moz-focusring,
+[type=reset]:-moz-focusring,
+[type=submit]:-moz-focusring {
+  outline: 1px dotted ButtonText;
+}
+fieldset {
+  border: 1px solid #c0c0c0;
+  margin: 0 2px;
+  padding: 0.35em 0.625em 0.75em;
+}
+legend {
+  color: inherit;
+  display: table;
+  max-width: 100%;
+  padding: 0;
+  white-space: normal;
+}
+textarea {
+  overflow: auto;
+}
+[type=checkbox],
+[type=radio] {
+  padding: 0;
+}
+[type=number]::-webkit-inner-spin-button,
+[type=number]::-webkit-outer-spin-button {
+  height: auto;
+}
+[type=search] {
+  -webkit-appearance: textfield;
+  outline-offset: -2px;
+}
+[type=search]::-webkit-search-cancel-button,
+[type=search]::-webkit-search-decoration {
+  -webkit-appearance: none;
+}
+::-webkit-input-placeholder {
+  color: inherit;
+  opacity: 0.54;
+}
+::-webkit-file-upload-button {
+  -webkit-appearance: button;
+  font: inherit;
+}
+/* End extract */
+.sb-modal {
+  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.95);
+  display: none;
+  font-family: sans-serif;
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 100vw;
+  z-index: 999999;
+  animation: animatezoom 0.4s;
+}
+.sb-modal.open {
+  display: block;
+}
+.btn {
+  cursor: pointer;
+  font-weight: bold;
+  padding: 16px;
+  position: absolute;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.sb-slide-count {
+  color: #FFF;
+  font-size: 14px;
+  top: 0;
+  left: 0;
+  margin: 0;
+}
+.sb-close {
+  font-size: 30px;
+  color: #CCC;
+  top: 0;
+  right: 0;
+  margin: 0;
+}
+.sb-close:hover,
+.sb-close:focus {
+  color: #FFF;
+}
+.sb-stage {
+  height: 70%;
+  width: 95%;
+  position: relative;
+  top: 10%;
+  margin: 0 auto;
+  background-size: contain;
+  background-position: center center;
+  background-repeat: no-repeat;
+  transition: 0.4s ease;
+}
+.sb-prev,
+.sb-next {
+  font-size: 20px;
+  border-radius: 3px;
+  top: 50%;
+  width: auto;
+  margin-top: -50px;
+  color: #FFF;
+  transition: 0.6s ease;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.sb-prev:hover,
+.sb-next:hover {
+  background-color: #ff9600;
+  background-color: rgba(255, 150, 0, 0.8);
+}
+.sb-prev {
+  left: 0;
+}
+.sb-next {
+  right: 0;
+}
+.sb-caption {
+  color: #dfdfdf;
+  font-size: 14px;
+  margin: 0 auto;
+  padding: 2px 16px;
+  text-align: center;
+  transition: 0.4s ease;
+  width: 70%;
+  max-width: 600px;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+@media only screen and (min-width: 850px) {
+  .sb-stage {
+    width: 80%;
+  }
+}
+@keyframes animatezoom {
+  from {
+    transform: scale(0);
+  }
+  to {
+    transform: scale(1);
+  }
+}
+.sb-previews {
+  margin: 0 auto;
+  padding: 5px 5px;
+  max-width: 100%;
+  height: 100%;
+  background-color: #e0dfdf;
+  display: block;
+  text-align: center;
+}
+.sb-previews .sb-preview {
+  position: relative;
+  background-color: #fdfde0;
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 5px;
+  width: 250px;
+  height: 180px;
+  display: inline-block;
+  transition: 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 10px 0 rgba(0, 0, 0, 0.2), 0 4px 20px 0 rgba(0, 0, 0, 0.19);
+}
+.sb-previews .sb-preview:hover {
+  background-size: 150% 150%;
+  background-position: center center;
+}
+.sb-previews .sb-preview:hover::after {
+  content: "Click to view";
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.4);
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+}

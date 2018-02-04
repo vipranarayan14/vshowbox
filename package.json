@@ -1,0 +1,39 @@
+{
+  "name": "vshowbox",
+  "version": "1.0.0",
+  "description": "A simple vanilla javaScript library for making image slideshow.",
+  "main": "dist/vshowbox.npm.js",
+  "files": [
+    "dist/vshowbox.npm.js"
+  ],
+  "scripts": {
+    "build": "rimraf dist && webpack",
+    "test": "eslint --ignore-path .gitignore ./src/*.js",
+    "start": "webpack-dev-server --config webpack.config.server",
+    "preversion": "yarn test",
+    "version": "yarn build && git add -A dist",
+    "postversion": "git push && git push --tags"
+  },
+  "repository": "github.com:vipranarayan14/vshowbox.git",
+  "author": "Prasanna Venkatesh T S",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vipranarayan14/vshowbox/issues"
+  },
+  "homepage": "https://vipranarayan14.github.io/vshowbox/",
+  "devDependencies": {
+    "babel-core": "6.26.0",
+    "babel-loader": "7.1.2",
+    "babel-preset-env": "1.6.1",
+    "css-loader": "^0.28.9",
+    "eslint": "4.12.1",
+    "extract-text-webpack-plugin": "^3.0.2",
+    "less": "^2.7.3",
+    "less-loader": "^4.0.5",
+    "rimraf": "2.6.2",
+    "style-loader": "^0.20.1",
+    "webpack": "3.10.0",
+    "webpack-dev-server": "2.9.7"
+  },
+  "dependencies": {}
+}
