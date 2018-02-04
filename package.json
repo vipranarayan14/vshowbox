@@ -4,7 +4,8 @@
   "description": "A simple vanilla javaScript library for making image slideshow.",
   "main": "dist/vshowbox.npm.js",
   "files": [
-    "dist/vshowbox.npm.js"
+    "dist/vshowbox.npm.js",
+    "dist/vshowbox.css"
   ],
   "scripts": {
     "build": "rimraf dist && webpack",
