@@ -5,7 +5,7 @@ A simple vanilla javaScript library for making image slideshow.
 ## Installation
 
 ```bash
-npm install vtranslit
+npm install vshowbox
 ```
 Or
 
@@ -17,6 +17,15 @@ add the 'vshowbox.js' from ['dist/'](https://github.com/vipranarayan14/vshowbox/
 
 ## Usage
 
+In node:
+
 ```js
-window.vShowBox.init();
+const { vShowBox } = require('vshowbox');
+const vshowbox = vShowBox.init();
+```
+
+In browser:
+
+```js
+var vshowbox = window.vShowBox.init();
 ```
