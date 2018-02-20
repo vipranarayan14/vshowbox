@@ -153,11 +153,11 @@ exports.vShowBox = undefined;
 
 var _init = __webpack_require__(2);
 
-__webpack_require__(5);
-
-__webpack_require__(6);
-
 __webpack_require__(7);
+
+__webpack_require__(8);
+
+__webpack_require__(9);
 
 var vShowBox = exports.vShowBox = {
   init: _init.initvShowBox
@@ -179,34 +179,11 @@ var _navigation = __webpack_require__(0);
 
 var _events = __webpack_require__(4);
 
-var initGlobals = function initGlobals() {
-
-  var SBPreviews = document.querySelectorAll('.sb-previews .sb-preview');
-  var SBModal = document.querySelector('.sb-modal');
-  var SBStage = SBModal.querySelector('.sb-stage');
-  var SBCaption = SBModal.querySelector('.sb-caption');
-  var SBSlideCount = document.querySelector('.sb-slide-count');
-
-  var slidesLength = SBPreviews.length;
-  var slideLastIndex = SBPreviews.length - 1;
-
-  return {
-    SBCaption: SBCaption,
-    SBModal: SBModal,
-    SBPreviews: SBPreviews,
-    SBSlideCount: SBSlideCount,
-    SBStage: SBStage,
-    slideIndex: 0,
-    slideLastIndex: slideLastIndex,
-    slideTitle: '',
-    slideUrl: '',
-    slidesLength: slidesLength
-  };
-};
+var _globals = __webpack_require__(5);
 
 var initvShowBox = exports.initvShowBox = function initvShowBox() {
 
-  var globals = initGlobals();
+  var globals = (0, _globals.initGlobals)();
 
   (0, _events.initEventListeners)(globals);
 
@@ -310,18 +287,80 @@ var initEventListeners = exports.initEventListeners = function initEventListener
 
 /***/ }),
 /* 5 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.initGlobals = undefined;
+
+var _modal = __webpack_require__(6);
+
+var initGlobals = exports.initGlobals = function initGlobals() {
+
+  var SBPreviewsContainer = document.querySelector('.sb-previews');
+  var SBPreviews = SBPreviewsContainer.querySelectorAll('.sb-preview');
+
+  var slidesLength = SBPreviews.length;
+  var slideLastIndex = SBPreviews.length - 1;
+
+  var modalComponents = (0, _modal.initModal)(SBPreviewsContainer);
+
+  return Object.assign({}, modalComponents, {
+    SBPreviews: SBPreviews,
+    SBPreviewsContainer: SBPreviewsContainer,
+    slideIndex: 0,
+    slideLastIndex: slideLastIndex,
+    slideTitle: '',
+    slideUrl: '',
+    slidesLength: slidesLength
+  });
+};
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var initModal = exports.initModal = function initModal(SBPreviewsContainer) {
+
+  SBPreviewsContainer.insertAdjacentHTML('afterend', '<section class="sb-modal">\n\n      <span class="sb-slide-count btn"></span>\n      <span class="sb-close btn">&times;</span>\n\n      <div class="sb-stage">\n\n        <span class="sb-prev btn">&#10094;</span>\n        <span class="sb-next btn">&#10095;</span>\n\n      </div>\n\n      <div class="sb-caption"></div>\n\n    </section>');
+
+  var SBModal = document.querySelector('.sb-modal');
+  var SBStage = SBModal.querySelector('.sb-stage');
+  var SBCaption = SBModal.querySelector('.sb-caption');
+  var SBSlideCount = document.querySelector('.sb-slide-count');
+
+  return {
+    SBCaption: SBCaption,
+    SBModal: SBModal,
+    SBSlideCount: SBSlideCount,
+    SBStage: SBStage
+  };
+};
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
 
 /***/ }),
-/* 7 */
+/* 8 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
