@@ -23,19 +23,40 @@
   <h1>vShowBox</h1>
   <p>A simple vanilla javaScript library for making image slideshow.</p>
 
-  <section class="sb-previews">
-
-    <div class="sb-preview" style="background-image: url('./resources/images/animals.jpeg')" title="Img 1"></div>
-    <div class="sb-preview" style="background-image: url('./resources/images/city.jpeg')" title="Img 2"></div>
-    <div class="sb-preview" style="background-image: url('./resources/images/nature.jpeg')" title="Img 3"></div>
-    <div class="sb-preview" style="background-image: url('./resources/images/technics.jpeg')" title="Img 4"></div>
-    <div class="sb-preview" style="background-image: url('./resources/images/transport.jpeg')" title="Img 5"></div>
-
-  </section>
+  <div id="vShowBox"></div>
 
   <script src="./dist/vshowbox.js"></script>
   <script>
-    const vshowbox = window.vShowBox.init();
+    const vshowbox = window.vShowBox({
+
+      container: document.querySelector('#vShowBox'),
+      slides: [
+
+        {
+          caption: 'animals',
+          preview: './resources/images/animals.jpeg'
+        },
+        {
+          caption: 'city',
+          preview: './resources/images/city.jpeg'
+        },
+        {
+          caption: 'nature',
+          content: './resources/images/nature-large.jpeg',          
+          preview: './resources/images/nature.jpeg'
+        },
+        {
+          caption: 'technics',
+          preview: './resources/images/technics.jpeg'
+        },
+        {
+          caption: 'transport',
+          preview: './resources/images/transport.jpeg'
+        }
+
+      ]
+
+    });
 
   </script>
 </body>
