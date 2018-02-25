@@ -344,8 +344,8 @@ var initModal = exports.initModal = function initModal(vsbPreviewsContainer) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var setSlideContent = function setSlideContent(slide) {
-  return slide.content = slide.content ? slide.content : slide.preview;
+var getPreview = function getPreview(slide) {
+  return slide.preview ? slide.preview : slide.content;
 };
 
 var makePreviews = function makePreviews(config) {
@@ -354,9 +354,9 @@ var makePreviews = function makePreviews(config) {
 
   config.slides.forEach(function (slide) {
 
-    vsbPreviews += '<div class="vsb-preview" \n            style="background-image: url(\'' + slide.preview + '\')" \n            title="' + slide.caption + '">\n      </div>';
+    var preview = getPreview(slide);
 
-    setSlideContent(slide);
+    vsbPreviews += '<div class="vsb-preview" \n            style="background-image: url(\'' + preview + '\')" \n            title="' + slide.caption + '">\n      </div>';
   });
 
   return vsbPreviews;

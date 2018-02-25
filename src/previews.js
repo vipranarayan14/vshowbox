@@ -1,5 +1,4 @@
-const setSlideContent = slide =>
-  slide.content = (slide.content) ? slide.content : slide.preview;
+const getPreview = slide => (slide.preview) ? slide.preview : slide.content;
 
 const makePreviews = config => {
 
@@ -7,13 +6,13 @@ const makePreviews = config => {
 
   config.slides.forEach(slide => {
 
+    const preview = getPreview(slide);
+
     vsbPreviews +=
       `<div class="vsb-preview" 
-            style="background-image: url('${slide.preview}')" 
+            style="background-image: url('${preview}')" 
             title="${slide.caption}">
       </div>`;
-
-    setSlideContent(slide);
 
   });
 
