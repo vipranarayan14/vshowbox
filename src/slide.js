@@ -1,15 +1,15 @@
 export const setSlideURLandTitle = globals => {
 
-  globals.slideURL = globals.SBPreviews[globals.slideIndex].style.backgroundImage;
-  globals.slideTitle = globals.SBPreviews[globals.slideIndex].getAttribute('title');
+  const slideUrl = globals.config.slides[globals.slideIndex].content;
+  const slideCaption = globals.config.slides[globals.slideIndex].caption;
 
-  globals.SBStage.style.backgroundImage = globals.slideURL;
-  globals.SBCaption.innerText = globals.slideTitle;
+  globals.vsbStage.style.backgroundImage = `url(${slideUrl}`;
+  globals.vsbCaption.innerText = slideCaption;
 
 };
 
 export const setSlideCount = globals => {
 
-  globals.SBSlideCount.innerText = `${globals.slideIndex + 1} / ${globals.slidesLength}`;
+  globals.vsbSlideCount.innerText = `${globals.slideIndex + 1} / ${globals.slidesLength}`;
 
 };

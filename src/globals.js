@@ -1,21 +1,24 @@
 import { initModal } from './modal';
 
-export const initGlobals = () => {
+export const initGlobals = vsbPreviewsContainer => {
 
-  const slidesLength = SBPreviews.length;
-  const slideLastIndex = SBPreviews.length - 1;
+  const vsbPreviews = vsbPreviewsContainer.querySelectorAll('.vsb-preview');
 
-  const modalComponents = initModal(SBPreviewsContainer);
+  const slidesLength = vsbPreviews.length;
+  const slideLastIndex = vsbPreviews.length - 1;
+
+  const modalComponents = initModal(vsbPreviewsContainer);
 
   return Object.assign({},
+
     modalComponents, {
-      SBPreviews,
-      SBPreviewsContainer,
+
       slideIndex: 0,
       slideLastIndex,
-      slideTitle: '',
-      slideUrl: '',
-      slidesLength
+      slidesLength,
+      vsbPreviews,
+      vsbPreviewsContainer
+
     }
   );
 

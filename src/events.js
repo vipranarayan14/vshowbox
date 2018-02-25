@@ -7,8 +7,8 @@ const triggerNavigation = (trigger, globals, elseCallback = () => {}) => {
     'keyCode=27': closeModal,
     'keyCode=37': prevSlide,
     'keyCode=39': nextSlide,
-    'targetClass=sb-next': nextSlide,
-    'targetClass=sb-prev': prevSlide
+    'targetClass=vsb-next': nextSlide,
+    'targetClass=vsb-prev': prevSlide
 
   }[trigger];
 
@@ -26,7 +26,7 @@ const triggerNavigation = (trigger, globals, elseCallback = () => {}) => {
 
 export const initEventListeners = globals => {
 
-  globals.SBPreviews.forEach((element, i) => {
+  globals.vsbPreviews.forEach((element, i) => {
 
     element.addEventListener('click', () => {
 
@@ -38,7 +38,7 @@ export const initEventListeners = globals => {
 
   });
 
-  globals.SBModal.addEventListener('click', e => {
+  globals.vsbModal.addEventListener('click', e => {
 
     const targetClass = e.target.classList;
 
@@ -48,7 +48,7 @@ export const initEventListeners = globals => {
 
   document.addEventListener('keydown', e => {
 
-    if (globals.SBModal.classList.contains('open')) {
+    if (globals.vsbModal.classList.contains('open')) {
 
       triggerNavigation(`keyCode=${e.keyCode}`, globals);
 

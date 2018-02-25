@@ -4,7 +4,7 @@ export const closeModal = globals => () => {
 
   document.documentElement.style.overflow = 'initial';
   document.body.style.overflow = 'initial';
-  globals.SBModal.classList.remove('open');
+  globals.vsbModal.classList.remove('open');
 
 };
 
@@ -55,6 +55,6 @@ const openModal = globals => {
 
   document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
-  globals.SBModal.classList.add('open');
+  globals.vsbModal.classList.add('open');
 
 };

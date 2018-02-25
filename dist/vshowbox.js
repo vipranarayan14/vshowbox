@@ -83,7 +83,7 @@ var closeModal = exports.closeModal = function closeModal(globals) {
 
     document.documentElement.style.overflow = 'initial';
     document.body.style.overflow = 'initial';
-    globals.SBModal.classList.remove('open');
+    globals.vsbModal.classList.remove('open');
   };
 };
 
@@ -136,7 +136,7 @@ var openModal = function openModal(globals) {
 
   document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
-  globals.SBModal.classList.add('open');
+  globals.vsbModal.classList.add('open');
 };
 
 /***/ }),
@@ -157,15 +157,21 @@ var _events = __webpack_require__(3);
 
 var _globals = __webpack_require__(4);
 
-__webpack_require__(6);
+var _previews = __webpack_require__(6);
 
 __webpack_require__(7);
 
 __webpack_require__(8);
 
-var vShowBox = exports.vShowBox = function vShowBox() {
+__webpack_require__(9);
 
-  var globals = (0, _globals.initGlobals)();
+var vShowBox = exports.vShowBox = function vShowBox(config) {
+
+  var vsbPreviewsConatiner = (0, _previews.initPreviews)(config);
+
+  var globals = (0, _globals.initGlobals)(vsbPreviewsConatiner);
+
+  globals.config = config;
 
   (0, _events.initEventListeners)(globals);
 
@@ -190,16 +196,16 @@ Object.defineProperty(exports, "__esModule", {
 });
 var setSlideURLandTitle = exports.setSlideURLandTitle = function setSlideURLandTitle(globals) {
 
-  globals.slideURL = globals.SBPreviews[globals.slideIndex].style.backgroundImage;
-  globals.slideTitle = globals.SBPreviews[globals.slideIndex].getAttribute('title');
+  var slideUrl = globals.config.slides[globals.slideIndex].content;
+  var slideCaption = globals.config.slides[globals.slideIndex].caption;
 
-  globals.SBStage.style.backgroundImage = globals.slideURL;
-  globals.SBCaption.innerText = globals.slideTitle;
+  globals.vsbStage.style.backgroundImage = "url(" + slideUrl;
+  globals.vsbCaption.innerText = slideCaption;
 };
 
 var setSlideCount = exports.setSlideCount = function setSlideCount(globals) {
 
-  globals.SBSlideCount.innerText = globals.slideIndex + 1 + ' / ' + globals.slidesLength;
+  globals.vsbSlideCount.innerText = globals.slideIndex + 1 + " / " + globals.slidesLength;
 };
 
 /***/ }),
@@ -225,8 +231,8 @@ var triggerNavigation = function triggerNavigation(trigger, globals) {
     'keyCode=27': _navigation.closeModal,
     'keyCode=37': _navigation.prevSlide,
     'keyCode=39': _navigation.nextSlide,
-    'targetClass=sb-next': _navigation.nextSlide,
-    'targetClass=sb-prev': _navigation.prevSlide
+    'targetClass=vsb-next': _navigation.nextSlide,
+    'targetClass=vsb-prev': _navigation.prevSlide
 
   }[trigger];
 
@@ -241,7 +247,7 @@ var triggerNavigation = function triggerNavigation(trigger, globals) {
 
 var initEventListeners = exports.initEventListeners = function initEventListeners(globals) {
 
-  globals.SBPreviews.forEach(function (element, i) {
+  globals.vsbPreviews.forEach(function (element, i) {
 
     element.addEventListener('click', function () {
 
@@ -251,7 +257,7 @@ var initEventListeners = exports.initEventListeners = function initEventListener
     });
   });
 
-  globals.SBModal.addEventListener('click', function (e) {
+  globals.vsbModal.addEventListener('click', function (e) {
 
     var targetClass = e.target.classList;
 
@@ -260,7 +266,7 @@ var initEventListeners = exports.initEventListeners = function initEventListener
 
   document.addEventListener('keydown', function (e) {
 
-    if (globals.SBModal.classList.contains('open')) {
+    if (globals.vsbModal.classList.contains('open')) {
 
       triggerNavigation('keyCode=' + e.keyCode, globals);
     }
@@ -281,24 +287,23 @@ exports.initGlobals = undefined;
 
 var _modal = __webpack_require__(5);
 
-var initGlobals = exports.initGlobals = function initGlobals() {
+var initGlobals = exports.initGlobals = function initGlobals(vsbPreviewsContainer) {
 
-  var SBPreviewsContainer = document.querySelector('.sb-previews');
-  var SBPreviews = SBPreviewsContainer.querySelectorAll('.sb-preview');
+  var vsbPreviews = vsbPreviewsContainer.querySelectorAll('.vsb-preview');
 
-  var slidesLength = SBPreviews.length;
-  var slideLastIndex = SBPreviews.length - 1;
+  var slidesLength = vsbPreviews.length;
+  var slideLastIndex = vsbPreviews.length - 1;
 
-  var modalComponents = (0, _modal.initModal)(SBPreviewsContainer);
+  var modalComponents = (0, _modal.initModal)(vsbPreviewsContainer);
 
   return Object.assign({}, modalComponents, {
-    SBPreviews: SBPreviews,
-    SBPreviewsContainer: SBPreviewsContainer,
+
     slideIndex: 0,
     slideLastIndex: slideLastIndex,
-    slideTitle: '',
-    slideUrl: '',
-    slidesLength: slidesLength
+    slidesLength: slidesLength,
+    vsbPreviews: vsbPreviews,
+    vsbPreviewsContainer: vsbPreviewsContainer
+
   });
 };
 
@@ -312,28 +317,65 @@ var initGlobals = exports.initGlobals = function initGlobals() {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-var initModal = exports.initModal = function initModal(SBPreviewsContainer) {
+var initModal = exports.initModal = function initModal(vsbPreviewsContainer) {
 
-  SBPreviewsContainer.insertAdjacentHTML('afterend', '<section class="sb-modal">\n\n      <span class="sb-slide-count btn"></span>\n      <span class="sb-close btn">&times;</span>\n\n      <div class="sb-stage">\n\n        <span class="sb-prev btn">&#10094;</span>\n        <span class="sb-next btn">&#10095;</span>\n\n      </div>\n\n      <div class="sb-caption"></div>\n\n    </section>');
+  vsbPreviewsContainer.insertAdjacentHTML('afterend', '<section class="vsb-modal">\n\n      <span class="vsb-slide-count btn"></span>\n      <span class="vsb-close btn">&times;</span>\n\n      <div class="vsb-stage">\n\n        <span class="vsb-prev btn">&#10094;</span>\n        <span class="vsb-next btn">&#10095;</span>\n\n      </div>\n\n      <div class="vsb-caption"></div>\n\n    </section>');
 
-  var SBModal = document.querySelector('.sb-modal');
-  var SBStage = SBModal.querySelector('.sb-stage');
-  var SBCaption = SBModal.querySelector('.sb-caption');
-  var SBSlideCount = document.querySelector('.sb-slide-count');
+  var vsbModal = document.querySelector('.vsb-modal');
+  var vsbStage = vsbModal.querySelector('.vsb-stage');
+  var vsbCaption = vsbModal.querySelector('.vsb-caption');
+  var vsbSlideCount = document.querySelector('.vsb-slide-count');
 
   return {
-    SBCaption: SBCaption,
-    SBModal: SBModal,
-    SBSlideCount: SBSlideCount,
-    SBStage: SBStage
+    vsbCaption: vsbCaption,
+    vsbModal: vsbModal,
+    vsbSlideCount: vsbSlideCount,
+    vsbStage: vsbStage
   };
 };
 
 /***/ }),
 /* 6 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var setSlideContent = function setSlideContent(slide) {
+  return slide.content = slide.content ? slide.content : slide.preview;
+};
+
+var makePreviews = function makePreviews(config) {
+
+  var vsbPreviews = '';
+
+  config.slides.forEach(function (slide) {
+
+    vsbPreviews += '<div class="vsb-preview" \n            style="background-image: url(\'' + slide.preview + '\')" \n            title="' + slide.caption + '">\n      </div>';
+
+    setSlideContent(slide);
+  });
+
+  return vsbPreviews;
+};
+
+var makePreviewsContainer = function makePreviewsContainer(vsbPreviews) {
+  return '<div class="vsb-previews">' + vsbPreviews + '</div>';
+};
+
+var initPreviews = exports.initPreviews = function initPreviews(config) {
+
+  var vsbPreviews = makePreviews(config);
+
+  var vsbPreviewsContainer = makePreviewsContainer(vsbPreviews);
+
+  config.container.insertAdjacentHTML('afterbegin', vsbPreviewsContainer);
+
+  return document.querySelector('.vsb-previews');
+};
 
 /***/ }),
 /* 7 */
@@ -343,6 +385,12 @@ var initModal = exports.initModal = function initModal(SBPreviewsContainer) {
 
 /***/ }),
 /* 8 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

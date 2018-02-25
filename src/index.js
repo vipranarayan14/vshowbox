@@ -1,14 +1,19 @@
 import { nextSlide, prevSlide, showSlide } from './navigation';
 import { initEventListeners } from './events';
 import { initGlobals } from './globals';
+import { initPreviews } from './previews';
 
 import './styles/normalize.less';
 import './styles/showbox.less';
 import './styles/sb-previews.less';
 
-export const vShowBox = () => {
+export const vShowBox = config => {
 
-  const globals = initGlobals();
+  const vsbPreviewsConatiner = initPreviews(config);
+
+  const globals = initGlobals(vsbPreviewsConatiner);
+
+  globals.config = config;
 
   initEventListeners(globals);
 

@@ -1,33 +1,33 @@
-export const initModal = SBPreviewsContainer => {
+export const initModal = vsbPreviewsContainer => {
 
-  SBPreviewsContainer.insertAdjacentHTML('afterend',
-    `<section class="sb-modal">
+  vsbPreviewsContainer.insertAdjacentHTML('afterend',
+    `<section class="vsb-modal">
 
-      <span class="sb-slide-count btn"></span>
-      <span class="sb-close btn">&times;</span>
+      <span class="vsb-slide-count btn"></span>
+      <span class="vsb-close btn">&times;</span>
 
-      <div class="sb-stage">
+      <div class="vsb-stage">
 
-        <span class="sb-prev btn">&#10094;</span>
-        <span class="sb-next btn">&#10095;</span>
+        <span class="vsb-prev btn">&#10094;</span>
+        <span class="vsb-next btn">&#10095;</span>
 
       </div>
 
-      <div class="sb-caption"></div>
+      <div class="vsb-caption"></div>
 
     </section>`
   );
 
-  const SBModal = document.querySelector('.sb-modal');
-  const SBStage = SBModal.querySelector('.sb-stage');
-  const SBCaption = SBModal.querySelector('.sb-caption');
-  const SBSlideCount = document.querySelector('.sb-slide-count');
+  const vsbModal = document.querySelector('.vsb-modal');
+  const vsbStage = vsbModal.querySelector('.vsb-stage');
+  const vsbCaption = vsbModal.querySelector('.vsb-caption');
+  const vsbSlideCount = document.querySelector('.vsb-slide-count');
 
   return {
-    SBCaption,
-    SBModal,
-    SBSlideCount,
-    SBStage
+    vsbCaption,
+    vsbModal,
+    vsbSlideCount,
+    vsbStage
   };
 
 };
