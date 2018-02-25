@@ -76,7 +76,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.showSlide = exports.prevSlide = exports.nextSlide = exports.closeModal = undefined;
 
-var _slide = __webpack_require__(3);
+var _slide = __webpack_require__(2);
 
 var closeModal = exports.closeModal = function closeModal(globals) {
   return function () {
@@ -151,37 +151,19 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.vShowBox = undefined;
 
-var _init = __webpack_require__(2);
+var _navigation = __webpack_require__(0);
+
+var _events = __webpack_require__(3);
+
+var _globals = __webpack_require__(4);
+
+__webpack_require__(6);
 
 __webpack_require__(7);
 
 __webpack_require__(8);
 
-__webpack_require__(9);
-
-var vShowBox = exports.vShowBox = {
-  init: _init.initvShowBox
-};
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.initvShowBox = undefined;
-
-var _navigation = __webpack_require__(0);
-
-var _events = __webpack_require__(4);
-
-var _globals = __webpack_require__(5);
-
-var initvShowBox = exports.initvShowBox = function initvShowBox() {
+var vShowBox = exports.vShowBox = function vShowBox() {
 
   var globals = (0, _globals.initGlobals)();
 
@@ -197,7 +179,7 @@ var initvShowBox = exports.initvShowBox = function initvShowBox() {
 };
 
 /***/ }),
-/* 3 */
+/* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -221,7 +203,7 @@ var setSlideCount = exports.setSlideCount = function setSlideCount(globals) {
 };
 
 /***/ }),
-/* 4 */
+/* 3 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -286,7 +268,7 @@ var initEventListeners = exports.initEventListeners = function initEventListener
 };
 
 /***/ }),
-/* 5 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -297,7 +279,7 @@ Object.defineProperty(exports, "__esModule", {
 });
 exports.initGlobals = undefined;
 
-var _modal = __webpack_require__(6);
+var _modal = __webpack_require__(5);
 
 var initGlobals = exports.initGlobals = function initGlobals() {
 
@@ -321,7 +303,7 @@ var initGlobals = exports.initGlobals = function initGlobals() {
 };
 
 /***/ }),
-/* 6 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -348,6 +330,12 @@ var initModal = exports.initModal = function initModal(SBPreviewsContainer) {
 };
 
 /***/ }),
+/* 6 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
 /* 7 */
 /***/ (function(module, exports) {
 
@@ -355,12 +343,6 @@ var initModal = exports.initModal = function initModal(SBPreviewsContainer) {
 
 /***/ }),
 /* 8 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 9 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
