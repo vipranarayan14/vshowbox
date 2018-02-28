@@ -203,18 +203,52 @@ var vShowBox = exports.vShowBox = function vShowBox(config) {
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+// function setBackgroundImage(){
+//   imageIsLoaded(myURL).then(function(value) {
+//       doc.querySelector("body > main").style.backgroundImage = "url(" + myURL + ")";
+//   }
+// }
+
+var imageIsLoaded = function imageIsLoaded(url) {
+  return new Promise(function (resolve, reject) {
+
+    var img = new Image();
+
+    img.addEventListener('load', function () {
+
+      resolve(true);
+    }, false);
+
+    img.addEventListener('error', function () {
+
+      reject(new Error('Could not get the image for this slide.' + 'Using image in preview.'));
+    }, false);
+
+    img.src = url;
+  });
+};
+
 var setSlideURLandTitle = exports.setSlideURLandTitle = function setSlideURLandTitle(globals) {
 
+  var previewUrl = globals.config.slides[globals.slideIndex].preview;
   var slideUrl = globals.config.slides[globals.slideIndex].content;
   var slideCaption = globals.config.slides[globals.slideIndex].caption;
 
-  globals.vsbStage.style.backgroundImage = "url(" + slideUrl;
+  globals.vsbStage.style.backgroundImage = 'url(' + previewUrl;
+
+  imageIsLoaded(slideUrl).then(function () {
+
+    globals.vsbStage.style.backgroundImage = 'url(' + slideUrl;
+  }).catch(function (value) {
+    return console.error(value);
+  }); // eslint-disable-line no-console
+
   globals.vsbCaption.innerText = slideCaption;
 };
 
 var setSlideCount = exports.setSlideCount = function setSlideCount(globals) {
 
-  globals.vsbSlideCount.innerText = globals.slideIndex + 1 + " / " + globals.slidesLength;
+  globals.vsbSlideCount.innerText = globals.slideIndex + 1 + ' / ' + globals.slidesLength;
 };
 
 /***/ }),
