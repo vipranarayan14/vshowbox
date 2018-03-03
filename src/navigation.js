@@ -2,8 +2,9 @@ import { setSlideCount, setSlideURLandTitle } from './slide';
 
 export const closeModal = globals => () => {
 
-  document.documentElement.style.overflow = 'initial';
-  document.body.style.overflow = 'initial';
+  document.documentElement.style.overflow = globals.docOverflow;
+  document.body.style.overflow = globals.bodyOverflow;
+
   globals.vsbModal.classList.remove('open');
 
 };
@@ -53,8 +54,12 @@ export const showSlide = globals => (slideNo = 0) => {
 
 const openModal = globals => {
 
+  globals.docOverflow = document.documentElement.style.overflow;
+  globals.bodyOverflow = document.body.style.overflow;
+
   document.documentElement.style.overflow = 'hidden';
   document.body.style.overflow = 'hidden';
+
   globals.vsbModal.classList.add('open');
 
 };
