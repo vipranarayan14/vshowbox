@@ -282,7 +282,7 @@ textarea {
   top: 50%;
   width: auto;
   margin-top: -50px;
-  color: #ccc;
+  color: #ff9600;
   transition: 0.6s ease;
   user-select: none;
   -webkit-user-select: none;
@@ -291,6 +291,7 @@ textarea {
 .vsb-modal .vsb-next:hover {
   background-color: #ff9600;
   background-color: rgba(255, 150, 0, 0.8);
+  color: #fff;
 }
 .vsb-modal .vsb-prev {
   left: 0;
