@@ -90,8 +90,8 @@ var _slide = __webpack_require__(2);
 var closeModal = exports.closeModal = function closeModal(globals) {
   return function () {
 
-    document.documentElement.style.overflow = globals.docOverflow;
-    document.body.style.overflow = globals.bodyOverflow;
+    document.documentElement.classList.remove('vsb-modal-open');
+    document.body.classList.remove('vsb-modal-open');
 
     globals.vsbModal.classList.remove('open');
   };
@@ -144,11 +144,8 @@ var showSlide = exports.showSlide = function showSlide(globals) {
 
 var openModal = function openModal(globals) {
 
-  globals.docOverflow = document.documentElement.style.overflow;
-  globals.bodyOverflow = document.body.style.overflow;
-
-  document.documentElement.style.overflow = 'hidden';
-  document.body.style.overflow = 'hidden';
+  document.documentElement.classList.add('vsb-modal-open');
+  document.body.classList.add('vsb-modal-open');
 
   globals.vsbModal.classList.add('open');
 };

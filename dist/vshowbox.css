@@ -180,6 +180,12 @@ textarea {
   font: inherit;
 }
 /* End extract */
+.vsb-modal-open {
+  overflow: hidden;
+}
+.vsb-modal-open body {
+  overflow: hidden;
+}
 .vsb-modal {
   background-color: #000;
   background-color: rgba(0, 0, 0, 0.95);
