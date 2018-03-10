@@ -1,6 +1,6 @@
 {
   "name": "vshowbox",
-  "version": "4.1.0",
+  "version": "4.1.1",
   "description": "A simple vanilla javaScript library for making image slideshow.",
   "main": "dist/vshowbox.npm.js",
   "files": [
