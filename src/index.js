@@ -3,9 +3,7 @@ import { initEventListeners } from './events';
 import { initGlobals } from './globals';
 import { initPreviews } from './previews';
 
-import './styles/normalize.less';
-import './styles/showbox.less';
-import './styles/sb-previews.less';
+import './styles/index.less';
 
 export const vShowBox = config => {
 
