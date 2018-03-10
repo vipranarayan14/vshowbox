@@ -224,11 +224,14 @@ var triggerNavigation = function triggerNavigation(trigger, globals) {
   var elseCallback = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : function () {};
 
 
+  var doNothing = function doNothing() {};
+
   var navigation = {
 
     'keyCode=27': _navigation.closeModal,
     'keyCode=37': _navigation.prevSlide,
     'keyCode=39': _navigation.nextSlide,
+    'targetClass=vsb-caption': doNothing,
     'targetClass=vsb-next': _navigation.nextSlide,
     'targetClass=vsb-prev': _navigation.prevSlide
 

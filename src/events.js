@@ -2,11 +2,14 @@ import { closeModal, nextSlide, prevSlide, showSlide } from './navigation';
 
 const triggerNavigation = (trigger, globals, elseCallback = () => {}) => {
 
+  const doNothing = () => {};
+
   const navigation = {
 
     'keyCode=27': closeModal,
     'keyCode=37': prevSlide,
     'keyCode=39': nextSlide,
+    'targetClass=vsb-caption': doNothing,
     'targetClass=vsb-next': nextSlide,
     'targetClass=vsb-prev': prevSlide
 
